@@ -1,0 +1,9 @@
+.cell { 
+	border-right: 1px solid #000000; 
+	border-bottom: 1px solid #000000; 
+	float: left; 
+	width: 100px; 
+	height: 100px; 
+}
+.row { clear: both; overflow: hidden; }
+.bingo_card { border-left: 1px solid #000000; border-top: 1px solid #000000; width: 505px;}
