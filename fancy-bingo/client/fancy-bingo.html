@@ -1,0 +1,25 @@
+<head>
+    <title>fancy-bingo</title>
+</head>
+
+<body>
+    {{> layout }}
+</body>
+
+<template name="layout">
+    {{yield}}
+</template>
+
+<template name="home">
+    <h1>Fancy Bingo</h1>
+    <div id="error_message"></div>
+    <div class="loginform">
+        <input type="text" name="player_name" />
+        <input id="login_button" type="submit" value="Login" />
+    </div>
+</template>
+
+<template name="game">
+    game!
+</template>
+
