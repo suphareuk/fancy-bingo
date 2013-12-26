@@ -9,20 +9,17 @@
     <ul class="player-list">
         <li>
             <span class="player-avatar"></span>
-            <span class="player-name"> You </span>
+            <span class="player-name"> {{ username }} </span>
+            <button class="logout">Leave</button>
         </li>
-        <li>
-            <span class="player-avatar"></span>
-            <span class="player-name"> Toon </span>
-        </li>
-        <li>
-            <span class="player-avatar"></span>
-            <span class="player-name"> Yo </span>
-        </li>
-        <li>
-            <span class="player-avatar"></span>
-            <span class="player-name"> Ton </span>
-        </li>
+        {{#each player_list}}
+            {{#if isNotMe name }}
+            <li>
+                <span class="player-avatar"></span>
+                <span class="player-name"> {{ name }} </span>
+            </li>
+            {{/if}}
+        {{/each}}
     </ul>
     <div id="wrapper">
 

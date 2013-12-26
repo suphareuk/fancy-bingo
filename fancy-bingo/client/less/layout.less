@@ -41,28 +41,38 @@ body { background: #e6e2cf; overflow: hidden; }
 	box-shadow: 1px 3px 3px 0 #bcb7a6;
 	position: relative;
 }
-.player-list .player-avatar {
-	width: 80px;
-	height: 80px;
-	float: left;
-	display: block;
-}
-.player-list .player-name {
-	position: absolute;
-	left: 90px;
-	top: 5px;
+.player-list { 
+
+    .logout {
+        position: absolute;
+        left: 90px;
+        bottom: 5px;
+    }
+
+    .player-avatar {
+        width: 80px;
+        height: 80px;
+        float: left;
+        display: block;
+    }
+
+    .player-name {
+        position: absolute;
+        left: 90px;
+        top: 5px;
+    }
 }
 .player-list li:nth-child(1) .player-avatar {
-	background: url('../img/avatar1.png');
+	background: url('/img/avatar1.png');
 }
 .player-list li:nth-child(2) .player-avatar {
-	background: url('../img/avatar2.png');
+	background: url('/img/avatar2.png');
 }
 .player-list li:nth-child(3) .player-avatar {
-	background: url('../img/avatar3.png');
+	background: url('/img/avatar3.png');
 }
 .player-list li:nth-child(4) .player-avatar {
-	background: url('../img/avatar4.png');
+	background: url('/img/avatar4.png');
 }
 .player-list li:nth-child(1){
 	border-top: 5px solid #f74200;

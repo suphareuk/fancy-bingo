@@ -22,14 +22,6 @@ Router.map(function () {
             }            
         }
     });  
-    this.route('logout', { 
-        path: '/logout', 
-        template: 'logout',
-        load: function() {
-            Session.set("room","no");
-            
-        }
-    });  
 });
 
 // model 
