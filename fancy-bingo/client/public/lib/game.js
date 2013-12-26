@@ -10,9 +10,14 @@ var Bingo = function() {
 	}());
 
 	this.player = {
-		bingoCard  : { B : [], I : [], N : [], G : [], O : [] },
-		scoreColumn : { B : 0, I : 0, N : 0, G : 0, O : 0 },
-		scoreRow : { 0 : 0, 1 : 0, 2 : 0, 3 : 0, 4 : 0}
+		bingoCard  : {},
+		score : { 
+			B : [0, 0, 0, 0, 0], 
+			I : [0, 0, 0, 0, 0],  
+			N : [0, 0, 'free', 0, 0], 
+			G : [0, 0, 0, 0, 0],  
+			O : [0, 0, 0, 0, 0] 
+		}
 	};
 
 	this.dealer = {
@@ -42,9 +47,10 @@ Bingo.prototype = {
 	},
 
 	pushNumbersToColumn : function(numbers, cardObj) {
-		for (var i = 0; i < numbers.length - 1; i++) {
+
+		for (var i = 0; i < 50; i++) {
 			if (numbers[i] <= 15 && cardObj.B.length <= 4) {
-				cardObj.B.push(numbers[i]);
+			    cardObj.B.push(numbers[i]);
 			} else if (numbers[i] >= 16 && numbers[i] <= 30 && cardObj.I.length <= 4) {
 				cardObj.I.push(numbers[i]);
 			} else if (numbers[i] >= 31 && numbers[i] <= 45 && cardObj.N.length <= 4) {
@@ -55,6 +61,7 @@ Bingo.prototype = {
 				cardObj.O.push(numbers[i]);
 			}
 		};
+		
 	},
 	
 	initDealerNumbers : function() {
@@ -65,17 +72,16 @@ Bingo.prototype = {
 		this.dealer.numbersRemain = numbersRemain;
 	},
 
-	isMatchWithUserNumber : function(calledNumbers, playerData) {
+	checkScore : function(calledNumbers, playerData) {
 		var lastestCalledNumber = calledNumbers[calledNumbers.length - 1];
-
+		console.log(lastestCalledNumber);
 		for(var column in playerData.bingoCard) {
 			for (var number in playerData.bingoCard[column]) {
 				if (playerData.bingoCard[column][number] === lastestCalledNumber) {
 					if (column == 'N' && number == 2) {
-						console.log('Freee -------------------');
+						playerData.score[column][number] = 'free';
 					} else {
-						playerData.scoreColumn[column] = playerData.scoreColumn[column] + 1;
-						playerData.scoreRow[number] = playerData.scoreRow[number] + 1;
+						playerData.score[column][number] = lastestCalledNumber;
 					}
 					
 				}
@@ -84,23 +90,35 @@ Bingo.prototype = {
 
 	},
 
-	isPlayerWin : function() {
+	isBingo : function(score) {
 
+		for(var column in score) {
+			// Column Bingo
+			if(score[column].indexOf(0) === -1) {
+				console.log('Bingo................................');
+				break;
+			};
+
+		}
 	},
 
 	newCard : function() {
 		var cardNumbers    = this.utilizesNums.concat(),
-			cardNumbersLen = cardNumbers.length - 1;
-			
+			cardNumbersLen = cardNumbers.length - 1,
+			bingoCard	   = { B : [], I : [], N : [], G : [], O : [] }; 
+		
 		this.shuffleNumbers(cardNumbersLen, cardNumbers);
-		this.pushNumbersToColumn(cardNumbers, this.player.bingoCard);
+		this.pushNumbersToColumn(cardNumbers, bingoCard);
+		this.player.bingoCard = bingoCard;
+
 	},
 
 	rollNumber : function() {
 		var dealerNumRemainLen = this.dealer.numbersRemain.length - 1;
 		this.shuffleNumbers(dealerNumRemainLen, this.dealer.numbersRemain);	
 		this.placeNumber(this.dealer.numbersCalled, this.dealer.numbersRemain);
-		this.isMatchWithUserNumber(this.dealer.numbersCalled, this.player);
+		this.checkScore(this.dealer.numbersCalled, this.player);
+		this.isBingo(this.player.score);
 	}
 
 }
@@ -109,7 +127,12 @@ var bingoGame1 = new Bingo();
 bingoGame1.newCard();
 bingoGame1.initDealerNumbers();
 
+console.log(bingoGame1.player.bingoCard);
+
 // Simulate roll turn
-for (var i = 0; i < 75; i++) {
+for (var i = 0; i < 60; i++) {
 	bingoGame1.rollNumber();
 };
+
+console.log(bingoGame1.player.score);
+
