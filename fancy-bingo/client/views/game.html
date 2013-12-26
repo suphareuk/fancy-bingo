@@ -7,22 +7,12 @@
       </span>
     </div>
     <ul class="player-list">
+        {{#each player_list}}
         <li>
             <span class="player-avatar"></span>
-            <span class="player-name"> You </span>
+            <span class="player-name"> {{ name }} </span>
         </li>
-        <li>
-            <span class="player-avatar"></span>
-            <span class="player-name"> Toon </span>
-        </li>
-        <li>
-            <span class="player-avatar"></span>
-            <span class="player-name"> Yo </span>
-        </li>
-        <li>
-            <span class="player-avatar"></span>
-            <span class="player-name"> Ton </span>
-        </li>
+        {{/each}}
     </ul>
     <div id="wrapper">
 
