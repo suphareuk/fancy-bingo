@@ -91,15 +91,40 @@ Bingo.prototype = {
 	},
 
 	isBingo : function(score) {
+		var row_bingo = [0,0,0,0,0];
+		var diagonal_bingo = [0,0];
+		var count = 0;
+		var reverse_count = 4;
 
-		for(var column in score) {
-			// Column Bingo
-			if(score[column].indexOf(0) === -1) {
+		for(var row in score) {
+			// Row Bingo
+			if(score[row].indexOf(0) === -1) {
 				console.log('Bingo................................');
 				break;
 			};
 
+			// Column Bingo
+			for(var i=0; i<score[row].length; i++) {
+				if(score[row][i] != 0) {
+					row_bingo[i] += 1;
+				}
+			}
+
+			// Diagonal Bingo
+			if(score[row][count] != 0){
+				diagonal_bingo[0] += 1;
+			}
+			if(score[row][reverse_count] != 0){
+				diagonal_bingo[1] += 1;
+			}
+			count++;
+			reverse_count--;
 		}
+		
+		if(row_bingo.indexOf(5) > 0 || diagonal_bingo.indexOf(5) > 0) {
+			console.log('Bingo................................');
+		}
+
 	},
 
 	newCard : function() {
