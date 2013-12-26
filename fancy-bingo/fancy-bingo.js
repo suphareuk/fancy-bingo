@@ -13,10 +13,13 @@ Router.map(function () {
     this.route('game', { 
         path: '/game',
         load: function() {
+            myBingo  = new Bingo();
+            myBingo.newCard();
+
             var inRoom = Session.get("room");
             if ( inRoom !== 'yes' ) { 
                 this.redirect('home');
-            }
+            }            
         }
     });  
     this.route('logout', { 

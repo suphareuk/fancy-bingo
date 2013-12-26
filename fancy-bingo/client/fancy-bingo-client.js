@@ -19,3 +19,25 @@ Template.home.events({
 Template.game.player_list = function() {
     return Players.find({});
 };
+
+Template.game.rendered = function() {
+    
+    $( ".column_B .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['B'][index]); });
+    $( ".column_I .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['I'][index]); });
+    $( ".column_N .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['N'][index]); });
+    $( ".column_G .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['G'][index]); });
+    $( ".column_O .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['O'][index]); });
+
+};
+
+Template.game.events({
+    'click #new_card' : function() { 
+        myBingo.newCard();
+        $( ".column_B .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['B'][index]); });
+        $( ".column_I .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['I'][index]); });
+        $( ".column_N .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['N'][index]); });
+        $( ".column_G .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['G'][index]); });
+        $( ".column_O .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['O'][index]); });
+    }
+});
+    

@@ -1,4 +1,4 @@
-var Bingo = function() {
+Bingo = function() {
 
 	this.utilizesNums = (function() {
 		var utilizesNums  = [],
@@ -99,7 +99,7 @@ Bingo.prototype = {
 		for(var row in score) {
 			// Row Bingo
 			if(score[row].indexOf(0) === -1) {
-				console.log('Bingo................................');
+				//console.log('Bingo................................');
 				break;
 			};
 
@@ -122,7 +122,7 @@ Bingo.prototype = {
 		}
 		
 		if(row_bingo.indexOf(5) > 0 || diagonal_bingo.indexOf(5) > 0) {
-			console.log('Bingo................................');
+			//console.log('Bingo................................');
 		}
 
 	},
@@ -148,16 +148,8 @@ Bingo.prototype = {
 
 }
 
+/* sample
 var bingoGame1 = new Bingo();
 bingoGame1.newCard();
-bingoGame1.initDealerNumbers();
-
-console.log(bingoGame1.player.bingoCard);
-
-// Simulate roll turn
-for (var i = 0; i < 60; i++) {
-	bingoGame1.rollNumber();
-};
-
-console.log(bingoGame1.player.score);
+bingoGame1.initDealerNumbers();*/
 
