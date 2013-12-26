@@ -1,53 +1,223 @@
-#game_wrapper {
+body { background: #e6e2cf; overflow: hidden; }
+.logo { 
+	width: 180px; 
+	position: absolute;
+	left: 25px;
+	top: 25px;
+}
+.bingo_card {
+	background: white;
+	border: 3px solid #eb7b39;
+	margin: 100px auto 0 auto;
+}
+.bingo_card_header {
+	list-style: none;
+	margin: 0; 
+	padding: 0;
+}
+.bingo_card_header li {
+	 float: left;
+	width: 60px;
+	background: #eb7b39;
+	color: white;
+	text-align: center;
+}
+.player-list {
+	list-style: none;
+	position: fixed;
+	bottom: 15px;
+	left: 15px;
+}
+.player-list li {
+	display: inline-block!important;
+	background: white;
+	width: 200px;
+	height: 80px;
+	display: block;
+	margin-right: 15px;
+	box-shadow: 1px 3px 3px 0 #bcb7a6;
+	position: relative;
+}
+.player-list .player-avatar {
+	width: 80px;
+	height: 80px;
+	float: left;
+	display: block;
+}
+.player-list .player-name {
+	position: absolute;
+	left: 90px;
+	top: 5px;
+}
+.player-list li:nth-child(1) .player-avatar {
+	background: url('../img/avatar1.png');
+}
+.player-list li:nth-child(2) .player-avatar {
+	background: url('../img/avatar2.png');
+}
+.player-list li:nth-child(3) .player-avatar {
+	background: url('../img/avatar3.png');
+}
+.player-list li:nth-child(4) .player-avatar {
+	background: url('../img/avatar4.png');
+}
+.player-list li:nth-child(1){
+	border-top: 5px solid #f74200;
+}
+.player-list li:nth-child(2){
+	border-top: 5px solid #489e3d;
+}
+.player-list li:nth-child(3){
+	border-top: 5px solid #8a7026;
+}
+.player-list li:nth-child(4){
+	border-top: 5px solid #321e00;
+}
+.bingo-history {
+	background: #44b98c;
+	position: absolute;
+	text-align: center;
+	right: 15px;
+	top: 15px;
+	font-family: arial;
+}
+.bingo-history .column { border-right: 1px solid #7bcdae	;}
+.bingo-history .active {
+	background: white;
+	color: black;
+	box-shadow: none;
+}
+.bingo-history ul {
+	list-style: none; 
+	margin: 0;
+	padding: 0;
+	width: 40px;
+}
+.bingo-history li {
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 12px;
+	background: #318565;
+	border-radius: 30px;
+	width: 24px;
+	height: 24px;
+	font-size: 11px;
+	color: #13261f;
+	line-height: 24px;
+	box-shadow: inset 1px 1px 3px #296f54;
+}
+.bingo-history .brush-font {
+	display: block;
+	margin: 12px 0 12px 0;
+}
+.row, #bingo_card { 
+	clear: both; 
+	overflow: hidden; 
+}
+.row .cell { 
+	border-right: 1px solid #000000; 
+	border-bottom: 1px solid #000000; 
+	float: left; 
+	width: 60px; 
+	height: 60px; 
+}
+
+.column { 
+	float: left; 
+}
+.column .cell { 
+	border-right: 1px solid #eb7b39; 
+	border-bottom: 1px solid #eb7b39; 
+	width: 60px; 
+	height: 60px; 
+	box-sizing: border-box;
+	text-align: center;
+	line-height: 60px;
+	color: #979797;
+	font-weight: bold;
+	font-size: 23px;
+	transition: all .4s;
+}
+.column_O .cell {
+	border-right: none;
+}
+
+#bingo_card, #called_number { 
+	width: 300px;	
+}
+
+#wrapper h1{
 	width: 305px;
 	margin: 60px auto 0 auto;
+	text-align: center;
+}
 
-    h1{
-        width: 305px;
-        margin: 60px auto 0 auto;
-        text-align: center;
-    }
+#next_roll {
+	margin: 15px auto 30px;
+	display: block;
+}
 
-    .row, #bingo_card { 
-        clear: both; 
-        overflow: hidden; 
-        margin: 0;
-    }
-    .row .cell { 
-        border-right: 1px solid #000000; 
-        border-bottom: 1px solid #000000; 
-        float: left; 
-        width: 60px; 
-        height: 60px; 
-    }
+#user_button {
+	margin: 15px auto 30px;
+	text-align: center;
+}
 
-    .column { 
-        float: left; 
-    }
-    .column .cell { 
-        border-right: 1px solid #000000; 
-        border-bottom: 1px solid #000000; 
-        width: 60px; 
-        height: 60px; 
-    }
+.correct_number {
+	background-color: #ffaa78;
+	color: #fff!important;
+}
+.white { color: white;}
+.hide { display: none;}
+.dealer_zone {
+	position: absolute;
+	right: 300px;
+	top: 50px;
+	width: 250px;
+}
+.machine { width: 250px;}
+.result-ball {
+	top: 123px;
+	animation: bounce 2s infinite;
+	-webkit-animation: bounce 2s infinite;
+	left: 100px;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 13px;
+	border-radius: 30px;
+	text-align: center;
+	display: block;
+	color: black;
+	background: yellow;
+	position: absolute;
+}
+.result-ball:after {
+	display: block;
+	content: '';
+	width: 100%;
+	height: 10px;
+	background: black;
+	top: 50px;
+	position: absolute;
+	border-radius: 30px 5px 5px 5px;
+}
+.result-ball .number {;
+	-webkit-animation: ball_spin 2s infinite;
+	position: absolute;
+	-webkit-backface-visibility: hidden;
+	color: transparent;
+}
+@-webkit-keyframes bounce {
 
-    #bingo_card, #called_number { 
-        border-left: 1px solid #000000; 
-        border-top: 1px solid #000000; 
-        width: 305px;	
-    }
-
-    #next_roll {
-        margin: 15px auto 30px;
-        display: block;
-    }
-
-    #user_button {
-        margin: 15px auto 30px;
-        text-align: center;
-    }
-
-    .correct_number {
-        background-color: #f05858;
-    }
+  50% {
+  	top: 220px;
+  }
+  100% { 
+  	top: 300px;
+  }
+}
+@-webkit-keyframes ball_spin {
+	100% {
+		-webkit-transform: rotateX(360deg) translateZ( 30px );;
+	}
 }

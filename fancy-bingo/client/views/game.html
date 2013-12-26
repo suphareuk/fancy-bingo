@@ -1,79 +1,143 @@
-<template name="game">
-<div id="game_wrapper">
-  <h1>Rolled Number</h1>
-  <div id="called_number">
-    <div class="row">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
+<template name="game"> 
+   <img class="logo" src="img/logo.png"/>
+    <div class="dealer_zone">
+      <img src="img/machine.png" class="machine"/>
+      <span class="result-ball">
+        <b class="number"> 15 </b>
+      </span>
     </div>
-    <div class="row">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-    </div>
-    <div class="row">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-    </div>
-    <div class="row">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-    </div>
-  </div>
+    <ul class="player-list">
+        <li>
+            <span class="player-avatar"></span>
+            <span class="player-name"> You </span>
+        </li>
+        <li>
+            <span class="player-avatar"></span>
+            <span class="player-name"> Toon </span>
+        </li>
+        <li>
+            <span class="player-avatar"></span>
+            <span class="player-name"> Yo </span>
+        </li>
+        <li>
+            <span class="player-avatar"></span>
+            <span class="player-name"> Ton </span>
+        </li>
+    </ul>
+    <div id="wrapper">
+      <h1 class="hide" >Rolled Number</h1>
+      <div class="hide"  id="called_number">
+        <div class="row">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </div>
+        <div class="row">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </div>
+        <div class="row">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </div>
+        <div class="row">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </div>
+      </div>
 
-   <h1>Your Number</h1>
-  <div id="bingo_card">
-    <div class="column column_B">
-      <div class="cell">1</div>
-      <div class="cell">7</div>
-      <div class="cell">14</div>
-      <div class="cell correct_number">12</div>
-      <div class="cell">8</div>
+      <div id="bingo_card" class="bingo_card">
+        <ul class="bingo_card_header">
+            <li> B </li>
+            <li> I </li>
+            <li> N </li>
+            <li> G </li>
+            <li> O </li>
+        </ul>
+        <div class="column column_B">
+          <div class="cell">1</div>
+          <div class="cell">7</div>
+          <div class="cell">14</div>
+          <div class="cell correct_number">12</div>
+          <div class="cell">8</div>
+        </div>
+        <div class="column column_I">
+          <div class="cell">25</div>
+          <div class="cell">47</div>
+          <div class="cell">62</div>
+          <div class="cell">2</div>
+          <div class="cell">3</div>
+        </div>
+        <div class="column column_N">
+          <div class="cell">9</div>
+          <div class="cell">30</div>
+          <div class="cell">22</div>
+          <div class="cell">12</div>
+          <div class="cell">22</div>
+        </div>
+        <div class="column column_G">
+          <div class="cell">11</div>
+          <div class="cell">6</div>
+          <div class="cell">2</div>
+          <div class="cell">8</div>
+          <div class="cell">9</div>
+        </div>
+        <div class="column column_O">
+          <div class="cell">12</div>
+          <div class="cell">32</div>
+          <div class="cell">20</div>
+          <div class="cell">19</div>
+          <div class="cell">36</div>
+        </div>
+      </div>
+      <div class="bingo-history">
+          <div class="column">
+              <span class="brush-font white"> B </span>
+              <ul class="history-cell">
+                  <li> 1 </li><li> 2 </li><li> 3 </li><li> 4 </li><li> 5 </li><li> 7 </li><li> 8 </li><li> 9 </li><li> 10 </li><li> 11 </li><li> 12 </li><li> 13 </li><li> 14 </li><li> 15 </li>
+              </ul>
+          </div>
+         <div class="column">
+              <span class="brush-font white"> I </span>
+              <ul class="history-cell">
+                  <li class="active"> 1 </li><li> 2 </li><li> 3 </li><li> 4 </li><li> 5 </li><li> 7 </li><li> 8 </li><li> 9 </li><li> 10 </li><li> 11 </li><li> 12 </li><li class="active"> 13 </li><li> 14 </li><li> 15 </li>
+              </ul>
+          </div>
+          <div class="column">
+              <span class="brush-font white"> N </span>
+              <ul class="history-cell">
+                  <li> 1 </li><li> 2 </li><li> 3 </li><li  class="active"> 4 </li><li> 5 </li><li> 7 </li><li> 8 </li><li> 9 </li><li> 10 </li><li> 11 </li><li> 12 </li><li> 13 </li><li> 14 </li><li> 15 </li>
+              </ul>
+          </div>
+          <div class="column">
+              <span class="brush-font white"> G </span>
+              <ul class="history-cell">
+                  <li> 1 </li><li> 2 </li><li> 3 </li><li  class="active"> 4 </li><li> 5 </li><li> 7 </li><li> 8 </li><li> 9 </li><li> 10 </li><li> 11 </li><li> 12 </li><li> 13 </li><li class="active"> 14 </li><li> 15 </li>
+              </ul>
+          </div>
+         <div class="column">
+              <span class="brush-font white"> O </span>
+              <ul class="history-cell">
+                  <li> 1 </li><li  class="active"> 2 </li><li> 3 </li><li  class="active"> 4 </li><li  class="active"> 5 </li><li> 7 </li><li> 8 </li><li> 9 </li><li> 10 </li><li> 11 </li><li> 12 </li><li> 13 </li><li class="active"> 14 </li><li> 15 </li>
+              </ul>
+          </div>
+      </div>
+      <div id="user_button">
+        <button id="new_card" onclick="generateCard(userBingoNumbers)">New Card</button>
+        <button id="mock_new_card">Mock New Card</button>
+        <button id="start_game">Start game</button>
+        <button id="next_roll">Roll</button>
+      </div>
     </div>
-    <div class="column column_I">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-    </div>
-    <div class="column column_N">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-    </div>
-    <div class="column column_G">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-    </div>
-    <div class="column column_O">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-    </div>
-  </div>
-  <div id="user_button">
-    <button id="new_card" onclick="generateCard(userBingoNumbers)">New Card</button>
-    <button id="start_game">Start game</button>
-    <button id="next_roll">Roll</button>
-  </div>
-</div>
 </template>
