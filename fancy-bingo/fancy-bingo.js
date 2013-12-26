@@ -11,7 +11,21 @@ Router.map(function () {
         template: 'home' 
     });  
     this.route('game', { 
-        path: '/game' 
+        path: '/game',
+        load: function() {
+            var inRoom = Session.get("room");
+            if ( inRoom !== 'yes' ) { 
+                this.redirect('home');
+            }
+        }
+    });  
+    this.route('logout', { 
+        path: '/logout', 
+        template: 'logout',
+        load: function() {
+            Session.set("room","no");
+            
+        }
     });  
 });
 

@@ -8,6 +8,7 @@ Template.home.events({
         if (players.count() == 0) {
             // ok. you can use this name. go to game page.
             var new_player = Players.insert({name: player_name});
+            Session.set('room','yes');
             Router.go('game');
         } else {
             error_elm.innerText = "Someone already used this name. Please login with another name!"; 
@@ -16,5 +17,5 @@ Template.home.events({
 });
 
 Template.game.player_list = function() {
-    var players = Players.find();
+    return Players.find({});
 };
