@@ -9,6 +9,7 @@ body { background: #e6e2cf; overflow: hidden; }
 	background: white;
 	border: 3px solid #eb7b39;
 	margin: 100px auto 0 auto;
+    .cell { position: relative; }
 }
 .bingo_card_header {
 	list-style: none;
@@ -40,7 +41,7 @@ body { background: #e6e2cf; overflow: hidden; }
     overflow: hidden;
 	height: 80px;
 	display: block;
-	margin-right: 2%;
+	margin-right: 1%;
 	box-shadow: 1px 3px 3px 0 #bcb7a6;
 	position: relative;
 }
@@ -163,8 +164,36 @@ body { background: #e6e2cf; overflow: hidden; }
 	float: left; 
 }
 .bingo_card .active {
-    background: #DA9A74;
-    color: #7D2E00!important;
+    &:after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 50px;
+        top: 2px;
+        left: 2px;
+        position: absolute;
+        border-radius: 60px;
+        border: 2px solid rgba(45, 80, 22, 0.56);
+        background: rgba(74, 158, 27, 0.23);
+        box-shadow: 0 0 8px #7BB96F;
+        -webkit-animation: circle_mark .5s 1 forwards;
+    }
+}   
+@-webkit-keyframes circle_mark {
+    0%{
+        opacity: 0;
+        -webkit-transform: scale(0.5,0.5);
+        -webkit-transform-origin:center;
+    }
+    80% {
+        opacity: 1;
+        -webkit-transform: scale(1.2,1.2);
+        -webkit-transform-origin:center;
+    }
+    100%{
+        -webkit-transform: scale(1,1);
+        -webkit-transform-origin: center;
+    }
 }
 .column .cell { 
 	border-right: 1px solid #eb7b39; 
@@ -398,8 +427,19 @@ body { background: #e6e2cf; overflow: hidden; }
         -webkit-animation-timing-function: ease-out;
     }
 }
+#roll , #new_card {
+    border: none;
+    background: #FF8322;
+    color: #F5DEB3;
+    font-weight: bold;
+    padding: 5px 10px;
+    &:disabled {
+        opacity: 0.5;
+    }
+}
 
 //----- Home
 .home-logo {
     margin: 0 auto;
 }
+
