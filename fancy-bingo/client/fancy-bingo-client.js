@@ -35,7 +35,11 @@ Template.game.rendered = function() {
     
     $( ".column_B .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['B'][index]); });
     $( ".column_I .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['I'][index]); });
-    $( ".column_N .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['N'][index]); });
+    $( ".column_N .cell" ).each(function( index ) { 
+        if (index !== 2) {
+            $(this).text(myBingo.player.bingoCard['N'][index]); 
+        }
+    });
     $( ".column_G .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['G'][index]); });
     $( ".column_O .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['O'][index]); });
 
@@ -59,7 +63,11 @@ Template.game.events({
         myBingo.newCard();
         $( ".column_B .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['B'][index]); });
         $( ".column_I .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['I'][index]); });
-        $( ".column_N .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['N'][index]); });
+        $( ".column_N .cell" ).each(function( index ) { 
+            if (index !== 2) {
+                $(this).text(myBingo.player.bingoCard['N'][index]); 
+            }
+        });
         $( ".column_G .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['G'][index]); });
         $( ".column_O .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['O'][index]); });
     }, 
@@ -67,6 +75,13 @@ Template.game.events({
 
         $("#new_card").attr('disabled', true);
         
+        function endGame() {
+            if (myBingo.player.win) {
+                $('#roll').attr('disabled', true).text('Bingo !!!');   
+                $('body').append('<div id="bingo"></div>');
+            }
+        }
+
         if (!myBingo.player.win) {
             
             myBingo.rollNumber();
@@ -88,12 +103,10 @@ Template.game.events({
             });
         
             shootBall(numbersCalled);
+            endGame();
 
-        } else if (myBingo.player.win) {
-            $('body').append('<div id="bingo"></div>');
-            $('#roll').attr('disabled', true).text('Bingo !!!');
-        }
-        
+        } 
     }
+
 });
 

@@ -101,7 +101,7 @@ Bingo.prototype = {
 			// Row Bingo
 			if(score[row].indexOf(0) === -1) {
 				this.player.win = true;
-				console.log('Column Bingo..........................................');
+				//console.log('Column Bingo..........................................');
 			};
 
 			// Column Bingo
@@ -121,10 +121,12 @@ Bingo.prototype = {
 			count++;
 			reverse_count--;
 		}
-		
+			
+		console.log(row_bingo);
+
 		if(row_bingo.indexOf(5) > 0 || diagonal_bingo.indexOf(5) > 0 ) {
 			this.player.win = true;
-			console.log('Bingo................................');
+			//console.log('Bingo................................');
 		}
 
 	},
