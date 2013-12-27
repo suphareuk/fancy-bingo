@@ -60,24 +60,26 @@ Template.game.events({
     }, 
     'click #roll' : function() { 
 
-        $("#new_card").attr('disable');
-
+        $("#new_card").attr('disabled', true);
+        
         myBingo.rollNumber();
 
-        console.log(myBingo.dealer.numbersCalled[myBingo.dealer.numbersCalled.length - 1]);
+        var numbersCalled = myBingo.dealer.numbersCalled[myBingo.dealer.numbersCalled.length - 1];
 
         $('.history-cell li').each(function(index) {
-            if (index + 1 === myBingo.dealer.numbersCalled[myBingo.dealer.numbersCalled.length - 1] ) {
+            if (index + 1 === numbersCalled ) {
                 var li_element = $('.history-cell li')[index];
                 $(li_element).addClass('active');        
             };
         });
 
         $('#bingo_card .cell').each(function(index) {
-            if($(this).text() == myBingo.dealer.numbersCalled[myBingo.dealer.numbersCalled.length - 1]) {
+            if($(this).text() == numbersCalled) {
                 $(this).addClass('active');
             }
         });
+        
+        shootBall(numbersCalled);
     }
 });
 
