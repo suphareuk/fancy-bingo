@@ -156,16 +156,3 @@ Bingo.prototype = {
 var bingoGame1 = new Bingo();
 bingoGame1.newCard();
 bingoGame1.initDealerNumbers();*/
-
-shootBall= function( number ){
-    //remove previous ball
-    $(".result-ball").remove();
-    var machineBox = $(".dealer_zone");
-    var resultBall = '<span class="result-ball animate">'+
-        '<span class="ball"></span>'+
-        '<span class="ball-shadow"></span>'+
-        '<b class="number"> '+ number +' </b>'+
-        '</span>';
-    machineBox.append( resultBall );
-};
-

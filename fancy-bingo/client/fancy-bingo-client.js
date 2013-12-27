@@ -19,6 +19,42 @@ Template.home.events({
 });
 
 // template game
+
+var gameControl = {
+
+    'endGame' : function() {
+        if (myBingo.player.win) {
+            $('#roll').attr('disabled', true).text('Bingo !!!');   
+            $('#bingo').fadeIn(200);
+        }
+    },
+
+    'shootBall' : function(number) {
+        //remove previous ball
+        $(".result-ball").remove();
+        var machineBox = $(".dealer_zone");
+        var resultBall = '<span class="result-ball animate">'+
+        '<span class="ball"></span>'+
+        '<span class="ball-shadow"></span>'+
+        '<b class="number"> '+ number +' </b>'+
+        '</span>';
+        machineBox.append( resultBall );
+    },
+
+    'renderCard' : function() {
+        $( ".column_B .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['B'][index]); });
+        $( ".column_I .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['I'][index]); });
+        $( ".column_N .cell" ).each(function( index ) { 
+            if (index !== 2) {
+                $(this).text(myBingo.player.bingoCard['N'][index]); 
+            }
+        });
+        $( ".column_G .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['G'][index]); });
+        $( ".column_O .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['O'][index]); });
+    }
+
+};
+
 Template.game.username = function() {
     return Session.get('username');
 };
@@ -32,61 +68,38 @@ Template.game.player_list = function() {
 };
 
 Template.game.rendered = function() {
-    
-    $( ".column_B .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['B'][index]); });
-    $( ".column_I .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['I'][index]); });
-    $( ".column_N .cell" ).each(function( index ) { 
-        if (index !== 2) {
-            $(this).text(myBingo.player.bingoCard['N'][index]); 
-        }
-    });
-    $( ".column_G .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['G'][index]); });
-    $( ".column_O .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['O'][index]); });
 
+    $('#bingo').hide();
+    gameControl.renderCard();
     // player style control 
     var player = $(".player-list li");
     if ( player.length > 7 ) {
         player.addClass('smaller');
     }
+
 };
 
 Template.game.events({
+    
+
     'click button.logout' : function() {
         var userid = Session.get('userid')
         Players.remove(userid);
         Session.set('room',null);
         Session.set('username',null);
         Session.set('userid',null);
+        $('#bingo').hide();
         Router.go('home');
     },
     'click #new_card' : function() { 
         myBingo.newCard();
-        $("#bingo_card").addClass('flip_card');
-        $( ".column_B .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['B'][index]); });
-        $( ".column_I .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['I'][index]); });
-        $( ".column_N .cell" ).each(function( index ) { 
-            if (index !== 2) {
-                $(this).text(myBingo.player.bingoCard['N'][index]); 
-            }
-        });
-        $( ".column_G .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['G'][index]); });
-        $( ".column_O .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['O'][index]); });
-        setTimeout(function(){
-            $("#bingo_card").removeClass('flip_card');
-        },400);
+        gameControl.renderCard();
     }, 
+
     'click #roll' : function() { 
 
         $("#new_card").attr('disabled', true);
-        $("#roll").attr('disabled',true);
-        
-        setInterval( function(){ 
-            function endGame() {
-                if (myBingo.player.win) {
-                    $('#roll').attr('disabled', true).text('Bingo !!!');   
-                    $('body').append('<div id="bingo"></div>');
-                }
-            }
+
             if (!myBingo.player.win) {
                 
                 myBingo.rollNumber();
@@ -106,11 +119,60 @@ Template.game.events({
                     }
                 });
             
-                shootBall(numbersCalled);
-                endGame();
+                gameControl.shootBall(numbersCalled);
+                gameControl.endGame();
             } 
-        }, 2000 );
+
     }
+
+    /*'click #auto_roll' : function() { 
+
+        var autoRoll = setInterval( function(){ 
+
+                function endGame() {
+                    if (myBingo.player.win) {
+                        $('#roll').attr('disabled', true).text('Bingo !!!');   
+                        $('body').append('<div id="bingo"></div>');
+                    }
+                }
+
+                if (!myBingo.player.win) {
+                    
+                    myBingo.rollNumber();
+
+                    var numbersCalledLen = myBingo.dealer.numbersCalled.length - 1,
+                        numbersCalled    = myBingo.dealer.numbersCalled[numbersCalledLen];
+                    $('.history-cell li').each(function(index) {
+                        if (index + 1 === numbersCalled ) {
+                            var li_element = $('.history-cell li')[index];
+                            $(li_element).addClass('active');        
+                        };
+                    });
+
+                    $('#bingo_card .cell').each(function(index) {
+                        if($(this).text() == numbersCalled) {
+                            $(this).addClass('active');
+                        }
+                    });
+                
+                    shootBall(numbersCalled);
+                    endGame();
+                } 
+
+            }, 2000 );
+
+        $("#new_card").attr('disabled', true);
+        
+        if ($("#auto_roll").text() === 'Stop') {
+            //stopAutoRoll();
+            //autoRoll = '';
+            clearInterval(autoRoll);
+            $("#auto_roll").text('Auto Roll');  
+        } else {
+            $("#auto_roll").text('Stop');  
+        }
+        
+    }*/
 
 });
 
