@@ -73,8 +73,8 @@ Template.game.events({
                 $(li_element).addClass('active');        
             };
         });
-
-        $('#ball_number').html(numbersCalled);
+        
+        shootBall(numbersCalled);
     }
 });
 
