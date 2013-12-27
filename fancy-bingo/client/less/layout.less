@@ -228,12 +228,13 @@ body { background: #e6e2cf; overflow: hidden; }
 	background: yellow;
     z-index: 998;
     border: 1px solid #A68E11;
+    -webkit-transform-origin: center;
 }
 .result-ball .ball-shadow {
 	display: block;
 	width: 30px;
 	height: 15px;
-	background: #A8A597;
+	background: rgba(0,0,0,0.3);
 	top: 70px;
 	position: absolute;
 	border-radius: ~'30px/15px';
@@ -380,6 +381,7 @@ body { background: #e6e2cf; overflow: hidden; }
 	background: url('/img/bingo.png');
     z-index: 99999;
 	-webkit-animation: bingo 0.7s 1 forwards;
+    -webkit-transform-origin: center;
 }
 @-webkit-keyframes bingo {
     0% {
