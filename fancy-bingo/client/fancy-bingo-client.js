@@ -62,14 +62,17 @@ Template.game.events({
         myBingo.initDealerNumbers()
         myBingo.rollNumber();
 
-        console.log(myBingo.dealer.numbersCalled[myBingo.dealer.numbersCalled.length - 1]);
+        var numbersCalled = myBingo.dealer.numbersCalled[myBingo.dealer.numbersCalled.length - 1];
+        console.log(numbersCalled);
 
         $('.history-cell li').each(function(index) {
-            if (index + 1 === myBingo.dealer.numbersCalled[myBingo.dealer.numbersCalled.length - 1] ) {
+            if (index + 1 === numbersCalled ) {
                 var li_element = $('.history-cell li')[index];
                 $(li_element).addClass('active');        
             };
         });
+
+        $('#ball_number').html(numbersCalled);
     }
 });
 
