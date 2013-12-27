@@ -28,7 +28,7 @@ body { background: #e6e2cf; overflow: hidden; }
 .player-list {
 	list-style: none;
 	position: absolute;
-	bottom: 55px;
+	bottom: 70px;
 	left: 15px;
 }
 .player-list li {
@@ -37,7 +37,7 @@ body { background: #e6e2cf; overflow: hidden; }
 	width: 200px;
 	height: 80px;
 	display: block;
-	margin-right: 15px;
+	margin-right: 2%;
 	box-shadow: 1px 3px 3px 0 #bcb7a6;
 	position: relative;
 }
@@ -47,6 +47,8 @@ body { background: #e6e2cf; overflow: hidden; }
         position: absolute;
         left: 90px;
         bottom: 5px;
+        border: none;
+        color: #525252;
     }
 
     .player-avatar {
@@ -60,6 +62,25 @@ body { background: #e6e2cf; overflow: hidden; }
         position: absolute;
         left: 90px;
         top: 5px;
+    }
+}
+.player-list .smaller {
+    width: 5%;
+    height: 40px;
+    margin-right: 1%;
+    .player-avatar {
+        -webkit-transform: scale(0.5,0.5);
+        -webkit-transform-origin: 0 0;
+    }
+    .player-name {
+        left: 45px;
+        top: 0;
+        font-size: 10px;
+    }
+    .logout {
+        left: 45px;
+        font-size: 10px;
+        padding: 0 5px;
     }
 }
 .player-list li:nth-child(1n+1) .player-avatar {

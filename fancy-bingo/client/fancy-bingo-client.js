@@ -39,6 +39,11 @@ Template.game.rendered = function() {
     $( ".column_G .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['G'][index]); });
     $( ".column_O .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['O'][index]); });
 
+    // player style control 
+    var player = $(".player-list li");
+    if ( player.length > 7 ) {
+        player.addClass('smaller');
+    }
 };
 
 Template.game.events({
