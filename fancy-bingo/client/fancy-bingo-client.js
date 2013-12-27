@@ -72,6 +72,12 @@ Template.game.events({
                 $(li_element).addClass('active');        
             };
         });
+
+        $('#bingo_card .cell').each(function(index) {
+            if($(this).text() == myBingo.dealer.numbersCalled[myBingo.dealer.numbersCalled.length - 1]) {
+                $(this).addClass('active');
+            }
+        });
     }
 });
 
