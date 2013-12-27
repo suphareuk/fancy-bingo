@@ -74,38 +74,38 @@ Template.game.events({
     'click #roll' : function() { 
 
         $("#new_card").attr('disabled', true);
+        $("#roll").attr('disabled',true);
         
-        function endGame() {
-            if (myBingo.player.win) {
-                $('#roll').attr('disabled', true).text('Bingo !!!');   
-                $('body').append('<div id="bingo"></div>');
-            }
-        }
-
-        if (!myBingo.player.win) {
-            
-            myBingo.rollNumber();
-
-            var numbersCalledLen = myBingo.dealer.numbersCalled.length - 1,
-                numbersCalled    = myBingo.dealer.numbersCalled[numbersCalledLen];
-
-            $('.history-cell li').each(function(index) {
-                if (index + 1 === numbersCalled ) {
-                    var li_element = $('.history-cell li')[index];
-                    $(li_element).addClass('active');        
-                };
-            });
-
-            $('#bingo_card .cell').each(function(index) {
-                if($(this).text() == numbersCalled) {
-                    $(this).addClass('active');
+        setInterval( function(){ 
+            function endGame() {
+                if (myBingo.player.win) {
+                    $('#roll').attr('disabled', true).text('Bingo !!!');   
+                    $('body').append('<div id="bingo"></div>');
                 }
-            });
-        
-            shootBall(numbersCalled);
-            endGame();
+            }
+            if (!myBingo.player.win) {
+                
+                myBingo.rollNumber();
 
-        } 
+                var numbersCalledLen = myBingo.dealer.numbersCalled.length - 1,
+                    numbersCalled    = myBingo.dealer.numbersCalled[numbersCalledLen];
+                $('.history-cell li').each(function(index) {
+                    if (index + 1 === numbersCalled ) {
+                        var li_element = $('.history-cell li')[index];
+                        $(li_element).addClass('active');        
+                    };
+                });
+
+                $('#bingo_card .cell').each(function(index) {
+                    if($(this).text() == numbersCalled) {
+                        $(this).addClass('active');
+                    }
+                });
+            
+                shootBall(numbersCalled);
+                endGame();
+            } 
+        }, 2000 );
     }
 
 });
