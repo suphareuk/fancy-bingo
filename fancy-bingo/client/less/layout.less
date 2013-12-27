@@ -366,3 +366,34 @@ body { background: #e6e2cf; overflow: hidden; }
        border-radius: 0;
    }
 }
+#bingo {
+    position: absolute;
+    -webkit-transform: scale(0.7, 0.7);
+    width: 1280px;
+    height: 1080px;
+    display: block;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;   
+	background: url('/img/bingo.png');
+    z-index: 99999;
+	-webkit-animation: bingo 0.7s 1 forwards;
+}
+@-webkit-keyframes bingo {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0.1, 0.1) rotate(0deg);
+        -webkit-animation-timing-function: ease-out;
+    }
+    80% {
+        opacity: 1;
+        -webkit-transform: scale(0.9, 0.9) rotate(360deg);
+    }
+    50% , 100% {
+        opacity: 1;
+        -webkit-transform: scale(0.7, 0.7) rotate(360deg);
+        -webkit-animation-timing-function: ease-out;
+    }
+}

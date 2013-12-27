@@ -90,6 +90,7 @@ Template.game.events({
             shootBall(numbersCalled);
 
         } else if (myBingo.player.win) {
+            $('body').append('<div id="bingo"></div>');
             $('#roll').attr('disabled', true).text('Bingo !!!');
         }
         
