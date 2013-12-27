@@ -37,6 +37,7 @@ body { background: #e6e2cf; overflow: hidden; }
 	display: inline-block!important;
 	background: white;
 	width: 200px;
+    overflow: hidden;
 	height: 80px;
 	display: block;
 	margin-right: 2%;
@@ -242,7 +243,7 @@ body { background: #e6e2cf; overflow: hidden; }
 }
 .result-ball .number {;
     z-index: 999;
-	-webkit-animation: ball_spin 0.9s 3 linear;
+	-webkit-animation: ball_spin 0.47s 3 linear;
 	position: absolute;
 	-webkit-backface-visibility: hidden;
     position: absolute;
@@ -253,12 +254,10 @@ body { background: #e6e2cf; overflow: hidden; }
     line-height: 30px;
 }
 .animate {
-    //-webkit-animation: bounce 3s forwards;
-    -webkit-animation: bounce 3s forwards,
-                        squeeze 3s forwards;
+    -webkit-animation: bounce 1.7s forwards,
+                        squeeze 1.7s forwards;
     .ball-shadow {
-        //-webkit-animation: shadow 3s forwards;
-        -webkit-animation: shadow 3s forwards;
+        -webkit-animation: shadow 1.7s forwards;
     }
 }
 @-webkit-keyframes bounce {
@@ -398,4 +397,9 @@ body { background: #e6e2cf; overflow: hidden; }
         -webkit-transform: scale(0.7, 0.7) rotate(360deg);
         -webkit-animation-timing-function: ease-out;
     }
+}
+
+//----- Home
+.home-logo {
+    margin: 0 auto;
 }
