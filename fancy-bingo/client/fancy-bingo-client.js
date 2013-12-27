@@ -67,24 +67,32 @@ Template.game.events({
 
         $("#new_card").attr('disabled', true);
         
-        myBingo.rollNumber();
+        if (!myBingo.player.win) {
+            
+            myBingo.rollNumber();
 
-        var numbersCalled = myBingo.dealer.numbersCalled[myBingo.dealer.numbersCalled.length - 1];
+            var numbersCalledLen = myBingo.dealer.numbersCalled.length - 1,
+                numbersCalled    = myBingo.dealer.numbersCalled[numbersCalledLen];
 
-        $('.history-cell li').each(function(index) {
-            if (index + 1 === numbersCalled ) {
-                var li_element = $('.history-cell li')[index];
-                $(li_element).addClass('active');        
-            };
-        });
+            $('.history-cell li').each(function(index) {
+                if (index + 1 === numbersCalled ) {
+                    var li_element = $('.history-cell li')[index];
+                    $(li_element).addClass('active');        
+                };
+            });
 
-        $('#bingo_card .cell').each(function(index) {
-            if($(this).text() == numbersCalled) {
-                $(this).addClass('active');
-            }
-        });
+            $('#bingo_card .cell').each(function(index) {
+                if($(this).text() == numbersCalled) {
+                    $(this).addClass('active');
+                }
+            });
         
-        shootBall(numbersCalled);
+            shootBall(numbersCalled);
+
+        } else if (myBingo.player.win) {
+            $('#roll').attr('disabled', true).text('Bingo !!!');
+        }
+        
     }
 });
 

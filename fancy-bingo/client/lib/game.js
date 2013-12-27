@@ -17,7 +17,8 @@ Bingo = function() {
 			N : [0, 0, 'free', 0, 0], 
 			G : [0, 0, 0, 0, 0],  
 			O : [0, 0, 0, 0, 0] 
-		}
+		},
+		win : false
 	};
 
 	this.dealer = {
@@ -99,8 +100,8 @@ Bingo.prototype = {
 		for(var row in score) {
 			// Row Bingo
 			if(score[row].indexOf(0) === -1) {
-				//console.log('Bingo................................');
-				break;
+				this.player.win = true;
+				console.log('Column Bingo..........................................');
 			};
 
 			// Column Bingo
@@ -121,8 +122,9 @@ Bingo.prototype = {
 			reverse_count--;
 		}
 		
-		if(row_bingo.indexOf(5) > 0 || diagonal_bingo.indexOf(5) > 0) {
-			//console.log('Bingo................................');
+		if(row_bingo.indexOf(5) > 0 || diagonal_bingo.indexOf(5) > 0 ) {
+			this.player.win = true;
+			console.log('Bingo................................');
 		}
 
 	},
