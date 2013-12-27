@@ -17,7 +17,7 @@ body { background: #e6e2cf; overflow: hidden; }
 }
 .bingo_card_header li {
 	 float: left;
-	width: 61px;
+	width: 60px;
 	height: 40px;
 	background: #eb7b39;
 	color: white;
@@ -27,8 +27,8 @@ body { background: #e6e2cf; overflow: hidden; }
 }
 .player-list {
 	list-style: none;
-	position: fixed;
-	bottom: 15px;
+	position: absolute;
+	bottom: 55px;
 	left: 15px;
 }
 .player-list li {
@@ -138,9 +138,9 @@ body { background: #e6e2cf; overflow: hidden; }
 .column { 
 	float: left; 
 }
-.column .active {
+.bingo_card .active {
     background: #DA9A74;
-    color: black;
+    color: #7D2E00!important;
 }
 .column .cell { 
 	border-right: 1px solid #eb7b39; 
@@ -160,7 +160,7 @@ body { background: #e6e2cf; overflow: hidden; }
 }
 
 #bingo_card, #called_number { 
-	width: 305px;	
+	width: 300px;	
 }
 
 
@@ -317,3 +317,27 @@ body { background: #e6e2cf; overflow: hidden; }
     }
 }
 
+.machine_box {
+    outline: 1px solid red;
+    width: 250px;
+    height: 270px;
+    display: block;
+}
+
+.chat-box {
+   position: absolute;
+   bottom: 25px;
+   left: 39px;
+   background: white;
+   height: 30px;
+   width: 500px;
+   padding: 7px;
+   box-shadow: 1px 3px 3px 0 #bcb7a6;
+   input {
+       width: 100%;
+       box-sizing: border-box;
+       height: 100%;
+       border: 1px solid #A9A9A9;
+       border-radius: 0;
+   }
+}
