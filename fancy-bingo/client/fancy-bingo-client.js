@@ -61,6 +61,7 @@ Template.game.events({
     },
     'click #new_card' : function() { 
         myBingo.newCard();
+        $("#bingo_card").addClass('flip_card');
         $( ".column_B .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['B'][index]); });
         $( ".column_I .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['I'][index]); });
         $( ".column_N .cell" ).each(function( index ) { 
@@ -70,6 +71,9 @@ Template.game.events({
         });
         $( ".column_G .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['G'][index]); });
         $( ".column_O .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['O'][index]); });
+        setTimeout(function(){
+            $("#bingo_card").removeClass('flip_card');
+        },400);
     }, 
     'click #roll' : function() { 
 

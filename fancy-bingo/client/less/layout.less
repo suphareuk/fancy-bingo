@@ -6,6 +6,8 @@ body { background: #e6e2cf; overflow: hidden; }
 	top: 25px;
 }
 .bingo_card {
+    -webkit-transition: all .4s ease-in;
+    -webkit-transform-style: preserve-3d;
 	background: white;
 	border: 3px solid #eb7b39;
 	margin: 100px auto 0 auto;
@@ -176,7 +178,7 @@ body { background: #e6e2cf; overflow: hidden; }
         border: 2px solid rgba(45, 80, 22, 0.56);
         background: rgba(74, 158, 27, 0.23);
         box-shadow: 0 0 8px #7BB96F;
-        -webkit-animation: circle_mark .5s 1 forwards;
+        -webkit-animation: circle_mark 4s 1 forwards;
     }
 }   
 @-webkit-keyframes circle_mark {
@@ -184,15 +186,19 @@ body { background: #e6e2cf; overflow: hidden; }
         opacity: 0;
         -webkit-transform: scale(0.5,0.5);
         -webkit-transform-origin:center;
+        background: rgba(74, 158, 27, 0.8);
     }
-    80% {
+    10% {
         opacity: 1;
         -webkit-transform: scale(1.2,1.2);
         -webkit-transform-origin:center;
     }
-    100%{
+    30%{
         -webkit-transform: scale(1,1);
         -webkit-transform-origin: center;
+    }
+    100%{
+        background: rgba(74, 158, 27, 0.23);
     }
 }
 .column .cell { 
@@ -437,9 +443,13 @@ body { background: #e6e2cf; overflow: hidden; }
         opacity: 0.5;
     }
 }
+.flip_card {
+    -webkit-transform: rotateY(180deg);
+}
 
 //----- Home
 .home-logo {
     margin: 0 auto;
 }
+
 
