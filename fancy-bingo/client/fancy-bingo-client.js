@@ -60,12 +60,11 @@ Template.game.events({
     }, 
     'click #roll' : function() { 
 
-        $("#new_card").attr('disable');
-
+        $("#new_card").attr('disabled', true);
+        
         myBingo.rollNumber();
 
         var numbersCalled = myBingo.dealer.numbersCalled[myBingo.dealer.numbersCalled.length - 1];
-        console.log(numbersCalled);
 
         $('.history-cell li').each(function(index) {
             if (index + 1 === numbersCalled ) {
