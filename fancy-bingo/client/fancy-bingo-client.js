@@ -57,6 +57,19 @@ Template.game.events({
         $( ".column_N .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['N'][index]); });
         $( ".column_G .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['G'][index]); });
         $( ".column_O .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['O'][index]); });
+    }, 
+    'click #roll' : function() { 
+        myBingo.initDealerNumbers()
+        myBingo.rollNumber();
+
+        console.log(myBingo.dealer.numbersCalled[myBingo.dealer.numbersCalled.length - 1]);
+
+        $('.history-cell li').each(function(index) {
+            if (index + 1 === myBingo.dealer.numbersCalled[myBingo.dealer.numbersCalled.length - 1] ) {
+                var li_element = $('.history-cell li')[index];
+                $(li_element).addClass('active');        
+            };
+        });
     }
 });
 
