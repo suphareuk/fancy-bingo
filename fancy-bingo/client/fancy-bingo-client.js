@@ -59,7 +59,9 @@ Template.game.events({
         $( ".column_O .cell" ).each(function( index ) { $(this).text(myBingo.player.bingoCard['O'][index]); });
     }, 
     'click #roll' : function() { 
-        myBingo.initDealerNumbers()
+
+        $("#new_card").attr('disable');
+
         myBingo.rollNumber();
 
         var numbersCalled = myBingo.dealer.numbersCalled[myBingo.dealer.numbersCalled.length - 1];

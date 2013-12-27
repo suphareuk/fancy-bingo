@@ -15,7 +15,8 @@ Router.map(function () {
         load: function() {
             myBingo  = new Bingo();
             myBingo.newCard();
-
+            myBingo.initDealerNumbers();
+            
             var inRoom = Session.get("room");
             if ( inRoom !== 'yes' ) { 
                 this.redirect('home');
