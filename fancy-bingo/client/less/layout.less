@@ -433,7 +433,7 @@ body { background: #e6e2cf; overflow: hidden; }
         -webkit-animation-timing-function: ease-out;
     }
 }
-#roll , #new_card {
+#roll , #new_card , #login_button {
     border: none;
     background: #FF8322;
     color: #F5DEB3;
@@ -448,8 +448,63 @@ body { background: #e6e2cf; overflow: hidden; }
 }
 
 //----- Home
-.home-logo {
-    margin: 0 auto;
+.home-intro {
+    margin-left: -152.5px;
+    margin-top: 220px;
+    left: 50%;
+    width: 305px;
+    height: 200px;
+    position: absolute;
 }
-
-
+.playername_form {
+    border: 1px solid #c3c3c3!important;
+    margin: 0!important;
+    border-radius: 0!important;
+}
+.loginform {
+    input { display:inline-block; }
+    padding: 7px;
+    background: white;
+    box-shadow: 0 0 0 11px rgba(177, 154, 132, 0.27);
+    margin-top: 50px;
+}
+.credit {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    bottom: 35px;
+    width: 100%;
+}
+.home-logo {
+    -webkit-animation: home-logo-animate 1.5s infinite;
+}
+@-webkit-keyframes home-logo-animate {
+    50% {
+       -webkit-transform: scale(1.1,1.1);
+       -webkit-animation-timing-function: ease-out;
+    }
+}
+.home-machine {
+    position: absolute;
+    bottom: -300px;
+    right: -300px;
+    border-radius: 800px;
+    width: 800px;
+    height: 800px;
+    border: 15px solid white;
+    display: block;
+    .body {
+        background: #30489E;
+    }
+    .hole {
+        position: absolute;
+        background: #EA7619;
+        width: 60px;
+        height: 40px;
+        border-radius: ~'30px/20px';
+        display: block;
+        left: 80px;
+        top: 186px;
+        -webkit-transform: rotate(-51deg);
+    }
+}

@@ -1,8 +1,13 @@
 <template name="home">
-    <h1>Fancy Bingo</h1>
-    <div id="error_message"></div>
-    <div class="loginform">
-        <input type="text" name="player_name" />
-        <input id="login_button" type="submit" value="Login" />
+    <div class="home-intro">
+        <img src="/img/logo.png" class="home-logo"/>
+        <div id="error_message"></div>
+        <form class="loginform">
+            <input class="playername_form" type="text" name="player_name"autofocus="autofocus"placeholder="Your name.." />
+            <input id="login_button" type="submit" value="Login" />
+        </form>
+    </div>
+    <div class="credit">
+        &copy; ABCtech production enterprise grand paradise studio. All right reserved 2015
     </div>
 </template>
